@@ -12,13 +12,12 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
     <!-- 设置Spring要检索的包 -->
-    <context:component-scan base-package="com.freeway.web" />
+    <context:component-scan base-package="com.xpyz.lotterdata" />
     <!-- 开启spring的注解功能 -->
     <context:annotation-config />
     <!-- 开启缓存控制 -->
     <cache:annotation-driven />
-
-
+    
     <!-- 缓存控制器 -->
     <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
         <property name="caches">

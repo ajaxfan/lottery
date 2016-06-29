@@ -13,5 +13,5 @@ public interface IDataLoaderFacade<T> {
 	 *            数据读取地址
 	 * @return
 	 */
-	public List<T> load(String str);
+	public List<T> load(String url);
 }

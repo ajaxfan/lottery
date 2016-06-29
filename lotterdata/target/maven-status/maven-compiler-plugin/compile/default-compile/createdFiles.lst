@@ -1,0 +1,12 @@
+com\xpyz\lotterdata\services\ILotterDataService.class
+com\xpyz\lotterdata\inters\IHtmlReader.class
+com\xpyz\lotterdata\inters\IHtmlConvertor.class
+com\xpyz\lotterdata\services\impl\LotterDataService.class
+com\xpyz\lotterdata\inters\IDataLoaderFacade.class
+com\xpyz\lotterdata\converts\HtmlConvert.class
+com\xpyz\lotterdata\readers\HtmlReader.class
+com\xpyz\lotterdata\facades\DataLoadFacade.class
+com\xpyz\lotterdata\tasks\LotterDataTask.class
+com\xpyz\lotterdata\models\LotterBean.class
+com\xpyz\lotterdata\builders\DataCollectionBuilder.class
+com\xpyz\lotterdata\inters\IDataCollectionBuilder.class

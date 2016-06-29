@@ -3,6 +3,7 @@ package com.xpyz.lotterdata.facades;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.xpyz.lotterdata.inters.IDataCollectionBuilder;
 import com.xpyz.lotterdata.inters.IDataLoaderFacade;
@@ -15,6 +16,7 @@ import com.xpyz.lotterdata.models.LotterBean;
  * 
  * @author Ajaxfan
  */
+@Component
 public class DataLoadFacade implements IDataLoaderFacade<LotterBean> {
 	/** 数据读取 */
 	private @Autowired IHtmlReader htmlReader;

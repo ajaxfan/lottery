@@ -5,50 +5,34 @@
 	<groupId>com.xpyz</groupId>
 	<artifactId>lotterdata</artifactId>
 	<version>1.0.0</version>
-	<packaging>jar</packaging>
-
 	<name>lotterdata</name>
 	<url>http://www.lotterdata.com</url>
-
+	
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<springframework.version>4.1.6.RELEASE</springframework.version>
+		<source-encoding>UTF-8</source-encoding>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>4.1.6.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>4.1.6.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>4.1.6.RELEASE</version>
+			<version>${springframework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.1.6.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>1.8.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.6.6</version>
+			<version>${springframework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.6.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.6</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>
@@ -93,15 +77,28 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.1</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
-					<encoding>UTF-8</encoding>
+					<encoding>${source.encoding}</encoding>
 					<skip>true</skip>
 					<archive>
 						<addMavenDescriptor>false</addMavenDescriptor>
 					</archive>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>1.1.9.RELEASE</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

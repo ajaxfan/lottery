@@ -18,9 +18,9 @@
 	<!-- 开启缓存控制 -->
 	<cache:annotation-driven />
 	<!-- 开启Spring后台任务功能 -->
-	<task:annotation-driven scheduler="visualFactoryTask" />
+	<task:annotation-driven scheduler="lotterDataScheduler" />
 	<!-- 线程池默认的大小为10 -->
-	<task:scheduler id="visualFactoryTask" pool-size="10" />
+	<task:scheduler id="lotterDataScheduler" pool-size="10" />
 
 	<!-- 缓存控制器 -->
 	<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">

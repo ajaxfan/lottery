@@ -5,9 +5,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.xpyz.lotterdata.inters.IHtmlConvertor;
+import com.xpyz.lotterdata.apis.IHtmlConvertor;
 import com.xpyz.lotterdata.models.LotterBean;
 
 /**
@@ -17,48 +18,51 @@ import com.xpyz.lotterdata.models.LotterBean;
  */
 @Component
 final class HtmlConvert implements IHtmlConvertor<LotterBean> {
-	/** 正则匹配规则 */
-	private static Pattern html_pattern = Pattern.compile("<tr>([\\d\\Wtd])+</tr>");
-	private static Pattern tr_pattern = Pattern.compile("<td>([\\d\\W])+</td>");
+    /** 每一期的记录过滤条件 */
+    private @Value("${regular.lotter.record.pattern}") String lotter_record_pattern;
+    /** 每一期记录中单独一个数据项的过滤条件 */
+    private @Value("${regular.lotter.record.item.pattern}") String lotter_record_item_pattern;
+    /** 与内容无关标签的替换规则 */
+    private @Value("${regular.html.td}") String td_tag_text;
 
-	/**
-	 * 文本转换为Java对象
-	 * 
-	 * @param html
-	 * @return
-	 */
-	public List<LotterBean> convert2JavaObject(String html) {
-		List<LotterBean> list = new ArrayList<LotterBean>();
-		Matcher matcher = html_pattern.matcher(html);
+    /**
+     * 文本转换为Java对象
+     * 
+     * @param html
+     * @return
+     */
+    public List<LotterBean> convert2JavaObject(String html) {
+        Matcher matcher = Pattern.compile(lotter_record_pattern).matcher(html);
+        List<LotterBean> list = new ArrayList<LotterBean>();
 
-		while (matcher.find()) {
-			List<String> tds = expand2tds(matcher.group());
+        while (matcher.find()) {// 读取每一条开奖信息，并对其内容进行过滤
+            List<String> tds = expand2tds(matcher.group());
 
-			if (tds.size() == 3) {
-				LotterBean bean = new LotterBean();
-				bean.setLotterNo(tds.get(0));
-				bean.setLotterResult(tds.get(1));
-				bean.setLotterDate(tds.get(2));
+            if (tds.size() >= 3) {// 分析当前版本，每条开奖记录只有是三个属性
+                LotterBean bean = new LotterBean();
+                bean.setLotterNo(tds.get(0));
+                bean.setLotterResult(tds.get(1));
+                bean.setLotterDate(tds.get(2));
 
-				list.add(bean);
-			}
-		}
-		return list;
-	}
+                list.add(bean);
+            }
+        }
+        return list;
+    }
 
-	/**
-	 * 展开TR对象，生成TD数据集合
-	 * 
-	 * @param tr
-	 * @return
-	 */
-	private List<String> expand2tds(String tr) {
-		Matcher matcher = tr_pattern.matcher(tr);
+    /**
+     * 展开TR对象，生成TD数据集合
+     * 
+     * @param tr
+     * @return
+     */
+    private List<String> expand2tds(String tr) {
+        Matcher matcher = Pattern.compile(lotter_record_item_pattern).matcher(tr);
+        List<String> list = new ArrayList<String>();
 
-		List<String> list = new ArrayList<String>();
-		while (matcher.find()) {
-			list.add(matcher.group().replaceAll("(<td>)|(</td>)", ""));
-		}
-		return list;
-	}
+        while (matcher.find()) {// 遍历一天记录中每一个属性
+            list.add(matcher.group().replaceAll("td_tag_match", ""));
+        }
+        return list;
+    }
 }

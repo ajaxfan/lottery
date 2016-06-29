@@ -1,4 +1,3 @@
-E:\Repository\lottery\lotterdata\src\main\java\com\xpyz\lotterdata\inters\IDataLoaderFacade.java
 E:\Repository\lottery\lotterdata\src\main\java\com\xpyz\lotterdata\services\impl\LotterDataService.java
 E:\Repository\lottery\lotterdata\src\main\java\com\xpyz\lotterdata\inters\IHtmlReader.java
 E:\Repository\lottery\lotterdata\src\main\java\com\xpyz\lotterdata\converts\HtmlConvert.java
@@ -7,7 +6,8 @@ E:\Repository\lottery\lotterdata\src\main\java\com\xpyz\lotterdata\facades\DataL
 E:\Repository\lottery\lotterdata\src\main\java\com\xpyz\lotterdata\Application.java
 E:\Repository\lottery\lotterdata\src\main\java\com\xpyz\lotterdata\builders\DataCollectionBuilder.java
 E:\Repository\lottery\lotterdata\src\main\java\com\xpyz\lotterdata\tasks\LotterDataTask.java
-E:\Repository\lottery\lotterdata\src\main\java\com\xpyz\lotterdata\inters\IDataCollectionBuilder.java
 E:\Repository\lottery\lotterdata\src\main\java\com\xpyz\lotterdata\services\ILotterDataService.java
+E:\Repository\lottery\lotterdata\src\main\java\com\xpyz\lotterdata\inters\IBuilder.java
 E:\Repository\lottery\lotterdata\src\main\java\com\xpyz\lotterdata\inters\IHtmlConvertor.java
+E:\Repository\lottery\lotterdata\src\main\java\com\xpyz\lotterdata\inters\IFacade.java
 E:\Repository\lottery\lotterdata\src\main\java\com\xpyz\lotterdata\readers\HtmlReader.java

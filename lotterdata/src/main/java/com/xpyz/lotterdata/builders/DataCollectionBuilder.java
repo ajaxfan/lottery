@@ -6,9 +6,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.xpyz.lotterdata.inters.IDataCollectionBuilder;
-import com.xpyz.lotterdata.inters.IHtmlConvertor;
-import com.xpyz.lotterdata.inters.IHtmlReader;
+import com.xpyz.lotterdata.apis.IHtmlConvertor;
+import com.xpyz.lotterdata.apis.IHtmlReader;
+import com.xpyz.lotterdata.apis.ILotterDataBuilder;
 import com.xpyz.lotterdata.models.LotterBean;
 
 /**
@@ -17,7 +17,7 @@ import com.xpyz.lotterdata.models.LotterBean;
  * @author Ajaxfan
  */
 @Component
-final class DataCollectionBuilder implements IDataCollectionBuilder<LotterBean> {
+final class DataCollectionBuilder implements ILotterDataBuilder<LotterBean> {
 	/** URL地址 */
 	private URL url;
 	/** HTML内容 */
@@ -28,7 +28,7 @@ final class DataCollectionBuilder implements IDataCollectionBuilder<LotterBean> 
 	/**
 	 * @param url
 	 */
-	public void buildUrl(String str) {
+	public void createRemoteConnection(String str) {
 		try {
 			this.url = new URL(str);
 		} catch (MalformedURLException e) {
@@ -39,7 +39,7 @@ final class DataCollectionBuilder implements IDataCollectionBuilder<LotterBean> 
 	/**
 	 * 读取HTML内容
 	 */
-	public void buildHtmlContent(IHtmlReader reader) {
+	public void readHtmlFromStream(IHtmlReader reader) {
 		if (this.url != null) {
 			this.html = reader.readHtmlContent(this.url);
 		}
@@ -48,7 +48,7 @@ final class DataCollectionBuilder implements IDataCollectionBuilder<LotterBean> 
 	/**
 	 * 读取数据集合
 	 */
-	public void buildDataCollection(IHtmlConvertor<LotterBean> convert) {
+	public void buildJavaCollectionFromHtml(IHtmlConvertor<LotterBean> convert) {
 		if (this.html != null) {
 			this.list = convert.convert2JavaObject(this.html);
 		}
@@ -57,7 +57,7 @@ final class DataCollectionBuilder implements IDataCollectionBuilder<LotterBean> 
 	/**
 	 * @return
 	 */
-	public List<LotterBean> getDataCollection() {
+	public List<LotterBean> getLotterDatas() {
 		return list;
 	}
 }

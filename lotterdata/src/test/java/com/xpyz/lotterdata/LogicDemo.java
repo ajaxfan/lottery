@@ -7,11 +7,6 @@ public class LogicDemo {
 	@Test
 	public void logicTest() {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath*:spring-*.xml");
-//		ILotterDataService dao = (ILotterDataService) context.getBean("lotterDataService");
-
 		
-//		 dao.saveData();
-		
-//		context.close();
 	}
 }

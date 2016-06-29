@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.xpyz.lotterdata.inters.IDataCollectionBuilder;
-import com.xpyz.lotterdata.inters.IDataLoaderFacade;
-import com.xpyz.lotterdata.inters.IHtmlConvertor;
-import com.xpyz.lotterdata.inters.IHtmlReader;
+import com.xpyz.lotterdata.apis.IHtmlConvertor;
+import com.xpyz.lotterdata.apis.IHtmlReader;
+import com.xpyz.lotterdata.apis.ILotterDataBuilder;
+import com.xpyz.lotterdata.apis.ILotterDataLoader;
 import com.xpyz.lotterdata.models.LotterBean;
 
 /**
@@ -17,13 +17,13 @@ import com.xpyz.lotterdata.models.LotterBean;
  * @author Ajaxfan
  */
 @Component
-public class DataLoadFacade implements IDataLoaderFacade<LotterBean> {
+final class DataLoadFacade implements ILotterDataLoader<LotterBean> {
 	/** 数据读取 */
 	private @Autowired IHtmlReader htmlReader;
 	/** 数据转换 */
 	private @Autowired IHtmlConvertor<LotterBean> htmlConvertor;
 	/** 数据构建工具 */
-	private @Autowired IDataCollectionBuilder<LotterBean> dataCollectionBuilder;
+	private @Autowired ILotterDataBuilder<LotterBean> dataCollectionBuilder;
 	
 	/**
 	 * 数据读取工具
@@ -33,10 +33,10 @@ public class DataLoadFacade implements IDataLoaderFacade<LotterBean> {
 	 */
 	public List<LotterBean> load(String str) {
 		// 按步骤构建数据集合
-		dataCollectionBuilder.buildUrl(str);
-		dataCollectionBuilder.buildHtmlContent(htmlReader);
-		dataCollectionBuilder.buildDataCollection(htmlConvertor);
+		dataCollectionBuilder.createRemoteConnection(str);
+		dataCollectionBuilder.readHtmlFromStream(htmlReader);
+		dataCollectionBuilder.buildJavaCollectionFromHtml(htmlConvertor);
 
-		return dataCollectionBuilder.getDataCollection();
+		return dataCollectionBuilder.getLotterDatas();
 	}
 }

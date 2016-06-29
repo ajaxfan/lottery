@@ -24,7 +24,7 @@ public class DataLoadFacade implements IDataLoaderFacade<LotterBean> {
 	private @Autowired IHtmlConvertor<LotterBean> htmlConvertor;
 	/** 数据构建工具 */
 	private @Autowired IDataCollectionBuilder<LotterBean> dataCollectionBuilder;
-
+	
 	/**
 	 * 数据读取工具
 	 * 

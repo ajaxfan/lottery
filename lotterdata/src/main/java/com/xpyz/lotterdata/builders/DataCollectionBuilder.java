@@ -3,7 +3,9 @@ package com.xpyz.lotterdata.builders;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+
 import org.springframework.stereotype.Component;
+
 import com.xpyz.lotterdata.inters.IDataCollectionBuilder;
 import com.xpyz.lotterdata.inters.IHtmlConvertor;
 import com.xpyz.lotterdata.inters.IHtmlReader;

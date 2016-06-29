@@ -61,7 +61,7 @@ final class HtmlConvert implements IHtmlConvertor<LotterBean> {
         List<String> list = new ArrayList<String>();
 
         while (matcher.find()) {// 遍历一天记录中每一个属性
-            list.add(matcher.group().replaceAll("td_tag_match", ""));
+            list.add(matcher.group().replaceAll(td_tag_text, ""));
         }
         return list;
     }

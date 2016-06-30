@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapper的配置信息 -->
+<mapper namespace="com.xpyz.lotterdata.mappers.ILotterDataMapper">
+	<resultMap id="lotterBean" type="LotterBean">
+		<id property="id" column="id" />
+		<result property="lotterNo" column="lotter_no"/>
+		<result property="lotterResult" column="lotter_result" />
+		<result property="lotterDate" column="lotter_date" />
+	</resultMap>
+
+	<!-- 查询最新的数据记录 -->
+	<select id="findLastRecord" resultMap="lotterBean">
+		SELECT id, lotter_no, lotter_result, lotter_date
+		FROM lotter_record
+		ORDER BY lotter_date DESC LIMIT 1
+	</select>
+	
+	<!-- 新增数据记录 -->
+	<insert id="insertRecord" parameterType="LotterBean" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO lotter_record(lotter_no, lotter_result, lotter_date) 
+        VALUES (#{lotterNo}, #{lotterResult}, #{lotterDate})
+    </insert>
+</mapper>

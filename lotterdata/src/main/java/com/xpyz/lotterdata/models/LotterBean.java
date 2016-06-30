@@ -1,9 +1,15 @@
 package com.xpyz.lotterdata.models;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name="lotter_reocrd")
+@Table(name = "lotter_reocrd")
 public class LotterBean {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	/** 期号 */
 	private String lotterNo;
 	/** 结果 */

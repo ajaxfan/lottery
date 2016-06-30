@@ -15,7 +15,7 @@
 		SELECT id, lotter_no,
 		lotter_result, lotter_date
 		FROM lotter_record
-		ORDER BY lotter_date DESC
+		ORDER BY lotter_no DESC
 		LIMIT 1
 	</select>
 
@@ -23,7 +23,7 @@
 	<select id="getRecordByCount" resultMap="lotterBean" parameterType="int">
 		SELECT id, lotter_no, lotter_result, lotter_date
 		FROM lotter_record
-		ORDER BY lotter_date DESC LIMIT #{amount}
+		ORDER BY lotter_no DESC LIMIT #{amount}
 	</select>
 
 	<!-- 新增数据记录 -->

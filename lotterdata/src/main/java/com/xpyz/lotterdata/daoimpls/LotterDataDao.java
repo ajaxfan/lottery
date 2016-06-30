@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.xpyz.lotterdata.apis.ILotterDataDao;
 import com.xpyz.lotterdata.mappers.ILotterDataMapper;
@@ -27,6 +28,7 @@ class LotterDataDao implements ILotterDataDao<LotterBean> {
      * @param records
      */
     @Override
+    @Transactional
     public void writeData2db(List<LotterBean> records) {
         int size = records.size();// 数据总量
         int successSize = 0;// 有效数据量

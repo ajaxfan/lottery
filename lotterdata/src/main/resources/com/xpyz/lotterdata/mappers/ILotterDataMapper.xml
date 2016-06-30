@@ -18,8 +18,19 @@
 	</select>
 	
 	<!-- 新增数据记录 -->
-	<insert id="insertRecord" parameterType="LotterBean" useGeneratedKeys="true" keyProperty="id">
+	<insert id="insertRecord" parameterType="List" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="AFTER">
+			SELECT LAST_INSERT_ID() as id
+		</selectKey>
         INSERT INTO lotter_record(lotter_no, lotter_result, lotter_date) 
-        VALUES (#{lotterNo}, #{lotterResult}, #{lotterDate})
+        <foreach collection="list" item="bean" index="index" separator="union all">
+			SELECT #{bean.lotterNo}, #{bean.lotterResult}, #{bean.lotterDate}
+			FROM dual
+			WHERE NOT EXISTS (
+				SELECT lotter_no
+			    FROM lotter_record
+			    WHERE lotter_no = #{bean.lotterNo}
+			)
+		</foreach>
     </insert>
 </mapper>

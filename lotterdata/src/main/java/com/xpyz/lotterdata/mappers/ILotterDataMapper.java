@@ -1,14 +1,14 @@
 package com.xpyz.lotterdata.mappers;
 
-import com.xpyz.lotterdata.models.LotterBean;
+import java.util.List;
 
-import tk.mybatis.mapper.common.Mapper;
+import com.xpyz.lotterdata.models.LotterBean;
 
 /**
  *
  * @author Ajaxfan
  */
 public interface ILotterDataMapper {
-	public void insertRecord(LotterBean bean);
+	public int insertRecord(List<LotterBean> bean);
 	public LotterBean findLastRecord();
 }

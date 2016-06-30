@@ -1,0 +1,7 @@
+15:52:36.535 [main] INFO  com.xpyz.lotterdata.Application - Starting Application on USER-20160621BM with PID 2896 (D:\Repository\lotterdata\target\classes started by Administrator in D:\Repository\lotterdata)
+15:52:38.895 [main] INFO  com.xpyz.lotterdata.Application - Started Application in 2.672 seconds (JVM running for 3.313)
+15:52:40.004 [lotterDataScheduler-1] INFO  com.xpyz.lotterdata - 共获得数据30条，其中有效数据1条。
+2016-06-30 15:53:41.301 com.xpyz.lotterdata.Application - Starting Application on USER-20160621BM with PID 1712 (D:\Repository\lotterdata\target\classes started by Administrator in D:\Repository\lotterdata)
+2016-06-30 15:53:43.660 com.xpyz.lotterdata.Application - Started Application in 2.687 seconds (JVM running for 3.328)
+2016-06-30 15:53:45.192 com.xpyz.lotterdata - 共获得数据30条，其中有效数据0条。
+2016-06-30 15:54:44.629 com.xpyz.lotterdata - 共获得数据30条，其中有效数据0条。

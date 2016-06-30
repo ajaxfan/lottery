@@ -8,10 +8,10 @@
 	</appender>
 	<!-- Define Write To File -->
 	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
-		<file>lotter_error.log</file>
+		<file>LotterData.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- daily rollover -->
-			<fileNamePattern>lotter.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<fileNamePattern>lotter.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
 			<!-- keep 5 days' worth of history capped at 1GB total size -->
 			<maxHistory>5</maxHistory>
 			<totalSizeCap>1GB</totalSizeCap>

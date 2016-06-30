@@ -18,32 +18,40 @@ import com.xpyz.lotterdata.models.LotterBean;
  */
 @Repository
 class LotterDataDao implements ILotterDataDao<LotterBean> {
-	/** 数据工具 */
-	private @Autowired ILotterDataMapper lotterDataMapper;
-	/** 日志工具 */
-	private Logger logger = Logger.getLogger("com.xpyz.lotterdata");
+    /** 数据工具 */
+    private @Autowired ILotterDataMapper lotterDataMapper;
+    /** 日志工具 */
+    private Logger logger = Logger.getLogger("com.xpyz.lotterdata");
 
-	/**
-	 * @param records
-	 */
-	@Override
-	public void writeData2db(List<LotterBean> records) {
-		int size = records.size();// 数据总量
-		int successSize = 0;// 有效数据量
+    /**
+     * @param records
+     */
+    @Override
+    public void writeData2db(List<LotterBean> records) {
+        int size = records.size();// 数据总量
+        int successSize = 0;// 有效数据量
 
-		try {
-			successSize = lotterDataMapper.insertRecord(records);
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
-		logger.info(MessageFormat.format("共获得数据{0}条，其中有效数据{1}条。", size, successSize));
-	}
+        try {
+            successSize = lotterDataMapper.insertRecord(records);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        logger.info(MessageFormat.format("共获得数据{0}条，其中有效数据{1}条。", size, successSize));
+    }
 
-	/**
-	 * @return
-	 */
-	@Override
-	public LotterBean getLastRecord() {
-		return lotterDataMapper.findLastRecord();
-	}
+    /**
+     * @return
+     */
+    @Override
+    public LotterBean getLastRecord() {
+        return lotterDataMapper.findLastRecord();
+    }
+
+    /**
+     * 获得指定数量的数据
+     */
+    @Override
+    public List<LotterBean> getRecordByCount(int count) {
+        return lotterDataMapper.getRecordByCount(count);
+    }
 }

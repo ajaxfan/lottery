@@ -14,12 +14,12 @@ public class DaoTest {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath*:spring-*.xml");
 		ILotterDataDao<LotterBean> dao = (ILotterDataDao<LotterBean>) context.getBean("lotterDataDao");
 
-		LotterBean bean = new LotterBean();
-		bean.setLotterNo("wrwer");
-		bean.setLotterResult("2938792374");
-		bean.setLotterDate("234-234-2342");
-
-		dao.writeData2db(Arrays.asList(new LotterBean[] { bean }));
+		try {
+            System.out.println(dao.getRecordByCount(30).size());
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
 		context.close();
 	}

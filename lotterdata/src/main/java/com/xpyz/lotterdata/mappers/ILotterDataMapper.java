@@ -9,6 +9,9 @@ import com.xpyz.lotterdata.models.LotterBean;
  * @author Ajaxfan
  */
 public interface ILotterDataMapper {
-	public int insertRecord(List<LotterBean> bean);
-	public LotterBean findLastRecord();
+    public int insertRecord(List<LotterBean> bean);
+
+    public LotterBean findLastRecord();
+
+    public List<LotterBean> getRecordByCount(int amount);
 }

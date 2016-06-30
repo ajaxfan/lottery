@@ -10,17 +10,25 @@ import com.xpyz.lotterdata.models.LotterBean;
  * @author Ajaxfan
  */
 public interface ILotterDataDao<T> {
-	/**
-	 * 数据写入到本地数据库
-	 * 
-	 * @param records
-	 */
-	public void writeData2db(List<T> records);
+    /**
+     * 数据写入到本地数据库
+     * 
+     * @param records
+     */
+    public void writeData2db(List<T> records);
 
-	/**
-	 * 获取最新的数据记录
-	 * 
-	 * @return
-	 */
-	public LotterBean getLastRecord();
+    /**
+     * 获取最新的数据记录
+     * 
+     * @return
+     */
+    public LotterBean getLastRecord();
+
+    /**
+     * 获得指定数量的数据
+     * 
+     * @param count
+     * @return
+     */
+    public List<LotterBean> getRecordByCount(int count);
 }

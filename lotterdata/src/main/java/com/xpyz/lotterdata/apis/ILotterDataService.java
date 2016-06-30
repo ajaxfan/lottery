@@ -12,4 +12,11 @@ public interface ILotterDataService {
      * @param url
      */
     public void synchnizedRemoteDataToLocal(String url);
+
+    /**
+     * 检查现有数据是否连续
+     * 
+     * @return
+     */
+    public boolean isDataContinulity();
 }

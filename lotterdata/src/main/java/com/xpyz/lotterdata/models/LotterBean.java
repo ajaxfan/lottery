@@ -1,5 +1,8 @@
 package com.xpyz.lotterdata.models;
 
+import javax.persistence.Table;
+
+@Table(name="lotter_reocrd")
 public class LotterBean {
 	/** 期号 */
 	private String lotterNo;
